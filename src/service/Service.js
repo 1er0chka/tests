@@ -9,7 +9,7 @@ const Service = {
                 "requestMethod": null,
                 "flowType": null,
                 "requestBodySize": 0,
-                "state": "PREPARING"
+                "state": "FINISHED"
             }, {
                 "id": "2f2e74c7-0344-4b76-b68a-046d45aced45",
                 "threadsCount": 0,
@@ -31,7 +31,7 @@ const Service = {
             }]
 
             // TODO - то что сверху - удалить
-            // TODO проверить когда данные появятся
+            // TODO надо проверить или json корректный
             const response = await fetch("http://localhost:9999/grpc-speedometer/tests")
             return await response.json()
         } catch (e) {
@@ -50,7 +50,7 @@ const Service = {
                 },
                 body: JSON.stringify(test)
             })
-            // TODO проверочки было бы круто добавить, но проверять нечего
+            // TODO надо получать данные о том добавился или нет (это можно просто статусами указать)
         } catch (e) {
             console.error('Failed To Create Test.')
             return false
@@ -67,7 +67,7 @@ const Service = {
                     'Content-Type': 'application/json'
                 }
             })
-            // TODO тоже бы проверочки....
+            // TODO надо получать данные о том остановился или нет (это можно просто статусами указать)
         } catch (e) {
             console.error('Failed To Stop Test.')
             return false
@@ -78,7 +78,7 @@ const Service = {
     async printTest(test) {
         try {
             const response = await fetch(`http://localhost:9999/grpc-speedometer/tests/${test.id}/excel`)
-            // TODO тоже бы проверочки....
+            // TODO надо получать данные о том пошло в печать или нет (это можно просто статусами указать)
         } catch (e) {
             console.error('Failed To Print Test Result.')
             return false

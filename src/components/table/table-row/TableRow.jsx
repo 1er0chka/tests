@@ -7,7 +7,9 @@ const TableRow = ({content, deleteTest, printTest}) => {
     const navigate = useNavigate()
 
     const openTest = () => {
-        navigate(`/${content.id}`)
+        if (content.state === "FINISHED") {
+            navigate(`/${content.id}`)
+        }
     }
 
     return (

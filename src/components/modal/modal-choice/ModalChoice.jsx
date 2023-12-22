@@ -15,7 +15,7 @@ const ModalChoice = ({isVisible, close, message, action, button}) => {
                     <div className={styles.title}>Message</div>
                     <div className={styles.text}>{message}</div>
                     <div className={styles.buttons}>
-                        <SecondaryButton text={"Cancel"} action={close}/>
+                        <SecondaryButton text={"Отмена"} action={close}/>
                         <div className={styles.betweenButtons}/>
                         <PrimaryButton text={button} action={onClick}/>
                     </div>

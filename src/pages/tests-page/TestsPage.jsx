@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Loading from "../../components/loading/Loading";
 import Table from "../../components/table/Table";
 import Service from "../../service/Service";
@@ -10,6 +10,7 @@ import ModalChoice from "../../components/modal/modal-choice/ModalChoice";
 
 const TestsPage = () => {
     const [isLoaded, setLoaded] = useState(false)
+    const [isWaiting, setWaiting] = useState(false)
     const [tests, setTests] = useState([])
     const [isAddTestModalVisible, setAddTestModalVisible] = useState(false)
     const [isMessageModalVisible, setMessageModalVisible] = useState(false)
@@ -29,31 +30,29 @@ const TestsPage = () => {
     }, 10000)
 
     const addTest = async (test) => {
-        // TODO убрать консоль лог
-        console.log(test)
-
+        setWaiting(true)
         Service.createTest(test).then((isSuccess) => {
-          if (isSuccess) {
-              setModalMessageText('Тест добавлен успешно.')
-              setMessageModalVisible(true)
-              getTests()
-          } else {
-              setModalMessageText('Не удалось добавить тест.')
-              setMessageModalVisible(true)
-          }
+            setWaiting(false)
+            if (isSuccess) {
+                setModalMessageText('Тест добавлен успешно.')
+                setMessageModalVisible(true)
+                getTests()
+            } else {
+                setModalMessageText('Не удалось добавить тест.')
+                setMessageModalVisible(true)
+            }
         })
     }
 
     const deleteAction = (test) => {
-        // TODO убрать консоль лог
-        console.log(test)
-
         setTestForDeleting(test)
         setChoiceModalVisible(true)
     }
 
     const deleteTest = async () => {
+        setWaiting(true)
         Service.stopTest(testForDeleting).then((isSuccess) => {
+            setWaiting(false)
             if (isSuccess) {
                 setModalMessageText('Выполнение теста остановлено.')
                 setMessageModalVisible(true)
@@ -66,10 +65,9 @@ const TestsPage = () => {
     }
 
     const printTest = async (test) => {
-        // TODO убрать консоль лог
-        console.log(test)
-
+        setWaiting(true)
         Service.stopTest(test).then((isSuccess) => {
+            setWaiting(false)
             if (isSuccess) {
                 setModalMessageText('Выполняется экспорт результатов выполнения теста.')
                 setMessageModalVisible(true)
@@ -98,9 +96,19 @@ const TestsPage = () => {
                     :
                     <Loading/>
             }
-            <ModalContact isVisible={isAddTestModalVisible} close={() => setAddTestModalVisible(false)} action={addTest}/>
-            <ModalMessage isVisible={isMessageModalVisible} message={modalMessageText} close={() => setMessageModalVisible(false)}/>
-            <ModalChoice isVisible={isChoiceModalVisible} message={'Вы уверены, что хотите остановить процесс выполнения теста?'} close={()=>setChoiceModalVisible(false)} action={deleteTest} button={"Остановить"}/>
+            <ModalContact isVisible={isAddTestModalVisible} close={() => setAddTestModalVisible(false)}
+                          action={addTest}/>
+            <ModalMessage isVisible={isMessageModalVisible} message={modalMessageText}
+                          close={() => setMessageModalVisible(false)}/>
+            <ModalChoice isVisible={isChoiceModalVisible}
+                         message={'Вы уверены, что хотите остановить процесс выполнения теста?'}
+                         close={() => setChoiceModalVisible(false)} action={deleteTest} button={"Остановить"}/>
+            {
+                isWaiting ?
+                    <Loading isFront={true}/>
+                    :
+                    null
+            }
         </div>
     )
 }

@@ -8,6 +8,7 @@ const Router = () => {
         <Routes>
             <Route element={<TestsPage/>} path={"/"}/>
             <Route element={<TestPage/>} path="/:testId"/>
+            <Route element={<NotFoundPage/>} path={"/page-not-found"}/>
             <Route element={<NotFoundPage/>} path={"/*"}/>
         </Routes>
     </BrowserRouter>
