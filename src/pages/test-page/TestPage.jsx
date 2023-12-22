@@ -5,7 +5,6 @@ import {getDocs, where, collection, query} from "firebase/firestore";
 import {testConverter} from "../../types/Test";
 import Loading from "../../components/loading/Loading";
 import PrimaryButton from "../../components/primary-button/PrimaryButton";
-import InlineData from "../../components/inline-data/InlineData";
 import styles from './TestPage.module.sass'
 import Service from "../../service/Service";
 import ModalMessage from "../../components/modal/modal-message/ModalMessage";
@@ -22,23 +21,13 @@ const TestPage = () => {
     const navigate = useNavigate()
 
     const fun = async () => {
-        /*
         const q = query(collection(database, "test-case-stats"), where("testCaseId", "==", testId)).withConverter(testConverter);
         const querySnapshot = await getDocs(q);
         if (querySnapshot.size < 1) {
             navigate(`/page-not-found`)
-        }*/
-        const querySnapshot = [{
-            second: [3],
-            totalRequestCount: [4],
-            requestsPerSecond: [223424],
-            averageRequestsPerSecond: [1],
-            type: 'type'
-        },
-        ]
-// test -> doc
-        querySnapshot.forEach((test) => {
-            //const test = doc.data()
+        }
+        querySnapshot.forEach((doc) => {
+            const test = doc.data()
             setTestHistory([...testHistory, test])
             setLoaded(true)
         });
