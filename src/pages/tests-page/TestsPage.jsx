@@ -27,7 +27,7 @@ const TestsPage = () => {
 
     setInterval(() => {
         getTests()
-    }, 10000)
+    }, 1000)
 
     const addTest = async (test) => {
         setWaiting(true)
