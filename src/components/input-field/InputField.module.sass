@@ -1,0 +1,42 @@
+@import "src/styles/fonts"
+
+.input
+  margin-bottom: 1vw
+
+  input
+    @include text
+    width: 93%
+    padding: 0.2vw 0.5vw 0.2vw 0.5vw
+    border: solid 0.1vw transparent
+    border-radius: 0.2vw
+
+    &:active, &:focus, &:hover
+      outline: none
+      border: solid 0.1vw #1EA2E4
+      background-color: rgba(255, 255, 255, 0.6)
+
+  div
+    @include text
+    color: red
+    margin-left: 0.1vw
+
+.error
+  margin-bottom: 0.5vw
+
+  input
+    @include text
+    width: 93%
+    padding: 0.2vw 0.5vw 0.2vw 0.5vw
+    border: solid 0.1vw rgba(255, 0, 0, 0.3)
+    border-radius: 0.2vw
+    background-color: rgba(255, 0, 0, 0.05)
+
+    &:active, &:focus, &:hover
+      outline: none
+      border: solid 0.1vw red
+      background-color: rgba(255, 0, 0, 0.1)
+
+  div
+    @include text
+    color: red
+    margin-left: 0.1vw

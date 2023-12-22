@@ -1,0 +1,21 @@
+@import "src/styles/fonts"
+
+.tableRow
+  @include text
+  border-top: solid 0.2vw #f0f4f7
+
+  &:hover
+    background-color: rgba(157, 215, 255, 0.3)
+
+  td
+    padding: 0.4vw 1vw 0.4vw 1vw
+
+    &:first-child
+      width: 80%
+
+    &:nth-child(2)
+      width: 20%
+      text-align: center
+
+    &:hover
+      cursor: pointer
