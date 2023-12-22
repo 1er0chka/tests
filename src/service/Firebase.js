@@ -3,14 +3,14 @@ import {getDatabase} from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDYfQ3C-eBZumVEcdSQp1lOHTO3w648Ga4",
-    authDomain: "grpcspeedometer.firebaseapp.com",
-    databaseURL: "https://grpcspeedometer.europe-central2.firebaseddatabase.app",
-    projectId: "grpcspeedometer",
-    storageBucket: "grpcspeedometer.appspot.com",
-    messagingSenderId: "306438182746",
-    appId: "1:306438182746:web:720d0132b0eaca4a780563",
-    measurementId: "G-KGJBMLXJXE"
+    apiKey: "AIzaSyCYgN74GLWckjqFvOg8sVFMCn6uKvKSWV8",
+    authDomain: "grpc-cc4be.firebaseapp.com",
+    projectId: "grpc-cc4be",
+    storageBucket: "grpc-cc4be.appspot.com",
+    messagingSenderId: "1050247779665",
+    appId: "1:1050247779665:web:628fcfc42c69b408572f70",
+    measurementId: "G-5FJ26WT1MV",
+    databaseURL: "https://grpc-cc4be.europe-central2.firebaseddatabase.app"
 };
 
 const app = initializeApp(firebaseConfig);
