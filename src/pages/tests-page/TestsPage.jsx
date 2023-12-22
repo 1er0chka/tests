@@ -18,8 +18,6 @@ const TestsPage = () => {
     const [modalMessageText, setModalMessageText] = useState('')
     const [testForDeleting, setTestForDeleting] = useState({})
 
-
-
     const getTests = async () => {
         Service.getAllTests().then((data) => {
             setTests(data)

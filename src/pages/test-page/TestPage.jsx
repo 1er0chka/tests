@@ -78,15 +78,15 @@ const TestPage = () => {
                         <div className={styles.title}>${testId}</div>
                         <div className={styles.data}>
                             <InlineData primaryInfo={'Количество запросов'}
-                                        secondaryInfo={test.totalRequestCount}/>
+                                        secondaryInfo={data.totalRequestCount}/>
                             <InlineData primaryInfo={'Количество запросов в секунду'}
-                                        secondaryInfo={test.requestsPerSecond}/>
+                                        secondaryInfo={data.requestsPerSecond}/>
                             <InlineData primaryInfo={'Среднее количество запросов в секунду'}
-                                        secondaryInfo={test.averageRequestsPerSecond}/>
-                            <InlineData primaryInfo={'Время выполнения теста'} secondaryInfo={test.second}/>
+                                        secondaryInfo={data.averageRequestsPerSecond}/>
+                            <InlineData primaryInfo={'Время выполнения теста'} secondaryInfo={data.second}/>
                             {
-                                test.type ?
-                                    <InlineData primaryInfo={'Тип'} secondaryInfo={test.type}/>
+                                data.type ?
+                                    <InlineData primaryInfo={'Тип'} secondaryInfo={data.type}/>
                                     :
                                     null
                             }
