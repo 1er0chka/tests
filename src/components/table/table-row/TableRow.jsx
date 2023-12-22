@@ -11,9 +11,9 @@ const TableRow = ({content, deleteTest, printTest}) => {
     }
 
     return (
-        <tr className={styles.tableRow} onClick={openTest}>
-            <td>{content.id}</td>
-            <td>{content.state}</td>
+        <tr className={styles.tableRow}>
+            <td onClick={openTest}>{content.id}</td>
+            <td onClick={openTest}>{content.state}</td>
             {
                 "CREATED WAITING PENDING PREPARING RUNNING".includes(content.state) ?
                     <td>
