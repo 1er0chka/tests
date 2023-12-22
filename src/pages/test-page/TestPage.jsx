@@ -14,9 +14,16 @@ const TestPage = () => {
     const {testId} = useParams();
     const [isLoaded, setLoaded] = useState(false)
     const [isWaiting, setWaiting] = useState(false)
-    const [test, setTest] = useState({})
     const [isMessageModalVisible, setMessageModalVisible] = useState(false)
     const [modalMessageText, setModalMessageText] = useState('')
+
+    const [data, setData] = useState({
+        averageRequestsPerSecond: [],
+        requestsPerSecond: [],
+        second: [],
+        totalRequestCount: [],
+        type: ''
+    })
 
     const navigate = useNavigate()
 
@@ -27,14 +34,26 @@ const TestPage = () => {
             navigate(`/page-not-found`)
         }
         querySnapshot.forEach((doc) => {
-            setTest(doc.data())
+            const test = doc.data()
+            setData({
+                averageRequestsPerSecond: [...data.averageRequestsPerSecond, test.averageRequestsPerSecond],
+                requestsPerSecond: [...data.requestsPerSecond, test.requestsPerSecond],
+                second: [...data.second, test.second],
+                totalRequestCount: [...data.totalRequestCount, test.totalRequestCount],
+                type: test.type
+            })
             setLoaded(true)
         });
     }
 
-    useEffect(() => {
+    /*
+        useEffect(() => {
+            fun()
+        }, [testId])*/
+
+    setInterval(() => {
         fun()
-    }, [testId])
+    }, 1000)
 
     const printTest = async (test) => {
         setWaiting(true)
